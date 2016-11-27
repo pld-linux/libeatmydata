@@ -1,11 +1,12 @@
 Summary:	Library designed to transparently disable fsync and friends
 Name:		libeatmydata
-Version:	82
+Version:	105
 Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	https://www.flamingspork.com/projects/libeatmydata/%{name}-%{version}.tar.gz
-# Source0-md5:	56a4d342f209ab75a9ee360236e3e5bc
+# Source0-md5:	6681166466e589eb0d71177709361256
+# https://github.com/stewartsmith/libeatmydata
 URL:		https://www.flamingspork.com/projects/libeatmydata/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,6 +36,7 @@ stores. It's called libEAT-MY-DATA for a reason.
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
 rm $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
@@ -49,5 +51,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/eatmydata
 %attr(755,root,root) %{_libdir}/eatmydata.sh
 %attr(755,root,root) %{_libdir}/libeatmydata.so
-%ghost %attr(755,root,root) %{_libdir}/libeatmydata.so.1
-%attr(755,root,root) %{_libdir}/libeatmydata.so.1.*
