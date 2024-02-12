@@ -1,12 +1,12 @@
 Summary:	Library designed to transparently disable fsync and friends
 Summary(pl.UTF-8):	Biblioteka do przezroczystego wyłączania fsync itp.
 Name:		libeatmydata
-Version:	105
+Version:	131
 Release:	1
 License:	GPL v3
 Group:		Applications/File
 Source0:	https://www.flamingspork.com/projects/libeatmydata/%{name}-%{version}.tar.gz
-# Source0-md5:	6681166466e589eb0d71177709361256
+# Source0-md5:	2d50db02d4ffff2b544c75aae60c3b3e
 # https://github.com/stewartsmith/libeatmydata
 URL:		https://www.flamingspork.com/projects/libeatmydata/
 BuildRequires:	autoconf >= 2.50
@@ -42,11 +42,13 @@ dane) nie bez powodu.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	--disable-static
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -60,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS README.md
 %attr(755,root,root) %{_bindir}/eatmydata
 %attr(755,root,root) %{_libdir}/eatmydata.sh
 %attr(755,root,root) %{_libdir}/libeatmydata.so
